@@ -1,0 +1,147 @@
+Version 0.3.70
+   - ScriptMacroprocessor::Macro class moved off the ScriptMacroprocessor
+     as class ScriptMacroprocessorMacro
+   - removed the ScriptVariable(int) constructor in favor of the new
+     MakeRoom(int) method
+   - created the scrvar_x module which implements the part of basic
+     functionality that depends on [vsf]printf and tolower/toupper
+     library functions (they all depend on locale, so it might be
+     undesirable to get them into the linking, specially if it is static)
+   - added TolowerLC and ToupperLC, Tolower&Toupper made locale-independent
+   - added ScriptVariable::Substring::SetLength method
+Version 0.3.69  (never released)
+   - fixed a segfaulting bug in ScriptVector::Insert
+   - fixed an arithmetic bug in ScriptVector::Join
+   - removed trailing spaces from all source files
+Version 0.3.68  (released with Thalassa 0.1.10)
+   - fixed cmd.cpp to compile under FreeBSD
+Version 0.3.67  (occasionally released with Thalassa 0.1.05, 0.1.06)
+   - made the ReadStream class objects close streams in destructor,
+     ReadStream class kept as legacy
+   - fixed the HeadedTextMessage destructor (to call the underlying
+     implementation's cleanup method)
+Version 0.3.66  (occasionally released with Thalassa 0.1.00, 0.1.01)
+   - fixed semantic on errors in macroexpansion (keep the macro call as it
+     was instead of turning it into empty string)
+   - fixed segfault on ScriptVariableInv within a macro func argument
+   - added the HeadedTextMessage::InBody() method
+   - in HeadedMessageParser, accessors aren't const now
+   - added scriptpp_getcwd and scriptpp_readlink functions
+   - added ScriptMacroprocessor::Apply method
+   - added HeadedTextMessage::GetHeader/s methods
+   - 'error' fields within the headed text message parser are now initialized
+   - found and fixed the ``double computation for eager arguments'' bug,
+     which could lead to macro injections
+   - added content manipulation methods to HeadedTextMessage
+   - added ReadDir::Rewind
+   - added FileStat::GetSize
+Version 0.3.65
+   - finally got rid of exceptions
+Version 0.3.61
+   - fixed method name (Sub -> Expand)
+Version 0.3.60
+   - added class ScriptMacroprocessor et al
+   - ScriptVector::Join now accepts idx and len to join a part of the vector
+Version 0.3.51
+   - ScriptVariable::Substring::{Move,Resize,ExtendTo*} now return *this
+   - some code style cleanup
+Version 0.3.50
+   - Substitutions now leave unknown variable calls as they are
+   - added ReadDir::OpenOk() method
+Version 0.3.40
+   - added message file reader implemented with headbody.[ch]
+Version 0.3.31
+   - fixed mem. leak in ScriptSubstitutionDictionary (added missing destructor)
+   - added FileStat::GetCreds method
+Version 0.3.30
+   - added config file reader
+   - reworked the ScriptVarible implementation to cache the string length
+Version 0.3.22
+   - removed occasional tabs (no changes in functionality)
+Version 0.3.21
+   - added ScriptVector constructor from char**
+   - added ScriptSubstitutionDictionary
+Version 0.3.20
+   - added lazy substitutions ${...}
+   - added 'const' to the ScriptSubstitutionPrefixRequest::Handle method's
+     parameter
+Version 0.3.11
+   - added ReadStream::ReadUntilEof
+   - removed ugly optimization attempt from ScriptVariable::Create
+Version 0.3.10
+   - added %[] substitutions, which can be nested
+Version 0.3.05
+   - fixed a bug in ScriptVector assignment
+Version 0.3.04 (to be released with FFazenda 1.62)
+   - handled the "invalid" case in the Substitute methods
+Version 0.3.03 (released with FFazenda 1.6, 1.61)
+   - added ScriptSubstitutionPrefixRequest for reqs like %req:p1:p2:p3%
+Version 0.3.02 (released with FFazenda 1.0)
+   - Strrstr finally implemented (after several years of being unimplemented)
+   - added ScriptVariable::Substring::Before & After
+   - added the scrsubs.[ch]pp module for variable substitution in a string
+Version 0.3.01
+   - fixed the 'invalid string comparision' bug
+   - fixed a makefile bug
+   - modified the Trim method to return a reference to the given object
+Version 0.3.00
+   - added the cmd.[ch]pp module which implements streams and external
+     commands
+   - added the scrmap.[ch]pp module with ScriptSet and ScriptMap classes
+   - added 'long long' support
+   - implemented the notion of 'Invalid' ScriptVariable
+   - fixed a bug in Substring::Erase()
+   - SCRIPTPP_ prefix added to all sentry macros in headers
+Version 0.2.52 (unreleased)
+   - fixed a bug with resizing of ScriptVector from within operator[]
+Version 0.2.51 (unreleased)
+   - install.mk enhanced with NOINCLUDEDIR (for inifile)
+   - fixed ugly-looking copyright comments
+Version 0.2.50 (released Feb 06, 2007)
+   - library made installable
+Version 0.2.15 (released Jan 13, 2007 with owl-setup)
+   - fixed bug in ScriptVector::Remove()
+   - HasSuffix() method added
+   - Valid()/Invalid() renamed to IsValid()/IsInvalid()
+Version 0.2.14 (released Apr 09, 2006)
+   - ScriptNumber class for conversions added
+Version 0.2.13 (released Jan 04, 2006)
+   - Added Substring::ExtendToBegin()/ExtendToEnd()
+   - Fixed a bug with Erase()/Replace() of a too long substring
+   - ScriptVariable::Strncmp() added
+Version 0.2.12 (officially released July 03, 2005)
+Version 0.2.11 (occasionally released with the icfp2005contest entry)
+   - minor syntactic fix to comply some standards...
+Version 0.2.10 (released June 11, 2005 as a part of Owlinst)
+   - ScriptVariable::Trim() added
+   - ScriptVariable::HasPrefix() added
+   - ScriptVector::Clear() added
+   - ScriptVector::operator[]() bug fixed
+   - ScriptVector::Remove() bug fixed
+   - ScriptVariable::Substring::{Move,Resize}() added
+   - some comments added
+   - COPYING files changed
+   - some obsoleted files removed
+   - friend directives fixed to comply to g++ 3.xx
+   - ScriptVariableImplementation simplified
+Version 0.2.02
+   - Toupper & Tolower now return *this for convenience
+Version 0.2.01
+   * in fact, there could be no difference at all, but the version
+     was prepared separately so the number was assigned to avoid possible
+     confusion
+Version 0.2
+   - ScriptWordVector and ScriptTokenVector classes added for convenience
+   - PrevToken, PrevWord methods added to the Iterator so that it can now
+     run backwards
+   - Strchr, Strrchr, Strstr added
+   - Substring::Substring(,pos,) for pos<0 is now meaningful (means -pos
+     positions from the end of the string).
+   - Fixed the problem with the NextToken iteration method in the situation
+     of an empty first token.
+   - Tolower function added
+   - Some doxygen-style comments added
+Version 0.1.01
+   - minor bugfix
+Version 0.1
+   - the very first one ever made available to anyone

@@ -1,0 +1,20 @@
+-> 0.3.24
+  - gott rid of trailing spaces
+-> 0.3.23
+  - fixed memory leak in GetModifiedTextParameter
+-> 0.3.22
+  - no real changes, comments only
+-> 0.3.21
+  - added GetModifiedIntegerParameter
+-> 0.3.20
+  - added the ``inifile'' commandline tool
+  - fixed a crushing bug in AddDictionaryData
+-> 0.3.10
+  - added partial support for CSV in parameters
+-> 0.3.00
+  - now removing trailing '\n' from the data
+-> 0.2.02
+  - comments with `;' added
+  - internal release-related fixes
+-> 0.2.01
+  - memory bug fixed
