@@ -1,0 +1,7 @@
+This directory contains libraries maintained elsewhere.  If you decide to
+change them, be sure to submit your changes upstream (at least try to do
+so).
+
+However, makefiles in this project assume libraries never change and hence
+don't look for their dependencies: if a libray file exists, that library
+doesn't get rebuilt automatically.
